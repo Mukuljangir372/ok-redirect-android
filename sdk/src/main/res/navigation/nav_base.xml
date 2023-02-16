@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_base"
+    app:startDestination="@id/browserFragment">
+    <fragment
+        android:id="@+id/browserFragment"
+        android:name="com.ok.redirect.sdk.browser.BrowserFragment"
+        android:label="OkRedirect" />
+</navigation>
