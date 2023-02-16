@@ -22,5 +22,7 @@ android {
     }
 }
 dependencies {
-    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.bundles.androidx.nav)
+    implementation(libs.bundles.androidx.ktx)
 }

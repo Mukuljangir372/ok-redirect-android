@@ -1,4 +1,7 @@
 package com.ok.redirect.sdk.browser
 
-class BaseBrowserFragment {
+import androidx.fragment.app.Fragment
+
+class BaseBrowserFragment: Fragment() {
+
 }
