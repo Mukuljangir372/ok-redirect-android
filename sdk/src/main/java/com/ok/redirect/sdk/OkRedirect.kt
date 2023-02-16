@@ -16,6 +16,11 @@ import com.ok.redirect.sdk.source.RedirectSourceType
  *        dataBinding true
  *        viewBinding true
  *    }
+ *
+ * 2. Enable These Permissions In Your Project -
+ * - AndroidManifest.xml :
+ *    <uses-permission android:name="android.permission.INTERNET"/>
+ *    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
  */
 class OkRedirect {
     companion object {

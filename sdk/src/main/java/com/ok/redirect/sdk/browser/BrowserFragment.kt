@@ -19,6 +19,15 @@ internal class BrowserFragment : BaseBrowserFragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initViews()
+    }
+
+    private fun initViews() {
+//        binding.webView.loadUrl("https://www.google.com")
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
