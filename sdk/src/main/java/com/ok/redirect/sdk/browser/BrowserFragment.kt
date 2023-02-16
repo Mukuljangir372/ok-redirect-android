@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
 import com.ok.redirect.sdk.databinding.FragmentBrowserBinding
 
 internal class BrowserFragment : BaseBrowserFragment() {
@@ -19,13 +20,18 @@ internal class BrowserFragment : BaseBrowserFragment() {
         return binding.root
     }
 
+    override fun getWebView(): WebView {
+        return binding.webView
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        loadWebView()
         initViews()
     }
 
     private fun initViews() {
-//        binding.webView.loadUrl("https://www.google.com")
+        binding.webView.loadUrl("https://www.google.com")
     }
 
     override fun onDestroy() {
