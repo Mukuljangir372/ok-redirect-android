@@ -3,6 +3,7 @@ package com.ok.redirect.sdk.browser
 import android.annotation.SuppressLint
 import android.view.View
 import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
@@ -18,10 +19,24 @@ internal abstract class BaseBrowserFragment : Fragment(), BrowserView {
     @SuppressLint("SetJavaScriptEnabled")
     override fun loadWebView() {
         lifecycleScope.launch(Dispatchers.Main) {
-            val view = getWebView()
-            view.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
-            view.settings.apply {
-                javaScriptEnabled = true
+            val view = getWebView().also {
+                it.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
+                it.settings.apply {
+                    javaScriptEnabled = true
+                }
+            }
+            view.webViewClient = getWebViewClient()
+        }
+    }
+
+    private fun getWebViewClient(): WebViewClient {
+        return object : WebViewClient() {
+            @Deprecated("Deprecated in Java")
+            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+                if (url != null) {
+                    view?.loadUrl(url)
+                }
+                return false
             }
         }
     }
