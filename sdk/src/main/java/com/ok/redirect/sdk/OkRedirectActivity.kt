@@ -19,10 +19,15 @@ internal class OkRedirectActivity : AppCompatActivity() {
         ).apply {
             lifecycleOwner = target
         }
+        initNavGraph()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun initNavGraph() {
+
     }
 }

@@ -8,6 +8,10 @@ import android.webkit.WebView
 import com.ok.redirect.sdk.databinding.FragmentBrowserBinding
 
 internal class BrowserFragment : BaseBrowserFragment() {
+    companion object {
+        const val SESSION_ID = "SESSION_ID"
+    }
+
     private var _binding: FragmentBrowserBinding? = null
     private val binding: FragmentBrowserBinding get() = _binding!!
 
@@ -27,11 +31,7 @@ internal class BrowserFragment : BaseBrowserFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loadWebView()
-        initViews()
-    }
-
-    private fun initViews() {
-        binding.webView.loadUrl("https://www.google.com")
+        loadInitialWebPage()
     }
 
     override fun onDestroy() {

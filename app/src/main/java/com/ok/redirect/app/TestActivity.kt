@@ -24,7 +24,7 @@ class TestActivity : AppCompatActivity() {
                 url = "https://www.google.com"
             ),
             target = OkRedirectTarget.AppPackage(
-                name = "com.whatsapp"
+                packageName = "com.whatsapp"
             )
         )
         OkRedirect().open(
