@@ -27,9 +27,16 @@ import com.ok.redirect.sdk.storage.SessionManager
  *    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
  */
 class OkRedirect {
-    fun open(context: Context, opens: List<OkRedirectOpen>) {
+    fun open(
+        context: Context,
+        initialWebUrl: String,
+        opens: List<OkRedirectOpen>
+    ) {
         val manager = SessionManager.getInstance()
-        val session = generateOkRedirectSession(opens = opens)
+        val session = generateOkRedirectSession(
+            initialWebUrl = initialWebUrl,
+            opens = opens
+        )
         manager.saveSession(session)
 
         val intent = Intent(context, OkRedirectActivity::class.java)

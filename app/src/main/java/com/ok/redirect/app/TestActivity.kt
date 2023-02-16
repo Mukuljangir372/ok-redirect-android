@@ -29,6 +29,7 @@ class TestActivity : AppCompatActivity() {
         )
         OkRedirect().open(
             context = this,
+            initialWebUrl = "https://www.google.com",
             opens = listOf(open)
         )
     }

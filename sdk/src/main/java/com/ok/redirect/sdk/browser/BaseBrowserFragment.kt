@@ -6,6 +6,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import com.ok.redirect.sdk.storage.SessionManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -15,6 +16,7 @@ internal interface BrowserView {
 
 internal abstract class BaseBrowserFragment : Fragment(), BrowserView {
     abstract fun getWebView(): WebView
+    internal val sessionManager = SessionManager.getInstance()
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun loadWebView() {
