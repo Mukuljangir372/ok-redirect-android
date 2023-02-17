@@ -27,7 +27,7 @@ internal abstract class BaseBrowserFragment : Fragment(), BrowserView {
     @SuppressLint("SetJavaScriptEnabled")
     override fun loadWebView() {
         lifecycleScope.launch(Dispatchers.Main) {
-            val view = getWebView().also {
+            getWebView().also {
                 it.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
                 it.settings.apply {
                     javaScriptEnabled = true
