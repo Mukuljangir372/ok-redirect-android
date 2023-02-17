@@ -6,8 +6,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.ok.redirect.sdk.redirect.OkRedirectSource
-import com.ok.redirect.sdk.redirect.OkRedirectTarget
+import com.ok.redirect.sdk.browser.BrowserFragment.Companion.SESSION_ID
 import com.ok.redirect.sdk.session.OkRedirectSession
 import com.ok.redirect.sdk.storage.SessionManager
 import kotlinx.coroutines.Dispatchers
@@ -48,23 +47,8 @@ internal abstract class BaseBrowserFragment : Fragment(), BrowserView {
 
     private fun getWebViewClient(): WebViewClient {
         return object : WebViewClient() {
-            @Deprecated("Deprecated in Java")
+            @Deprecated("Deprecated in Java", ReplaceWith("true"))
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-                val opens = getCurrentSession().opens
-                val redirect = opens.firstOrNull {
-                    it.source is OkRedirectSource.Url && url?.startsWith(it.source.url) == true
-                }
-                val isRedirected = when (redirect?.target) {
-                    is OkRedirectTarget.AppPackage -> {
-                        true
-                    }
-                    else -> {
-                        false
-                    }
-                }
-                if (!isRedirected && url != null) {
-                    view?.loadUrl(url)
-                }
                 /**
                  * return false -
                  * don't redirect anywhere (load url here same web view)
@@ -72,14 +56,17 @@ internal abstract class BaseBrowserFragment : Fragment(), BrowserView {
                  * return true -
                  * redirect to anywhere (e.g other browser like chrome)
                  */
-                return !isRedirected
+                if (url != null) {
+                    view?.loadUrl(url)
+                }
+                return true
             }
         }
     }
 
     private fun getCurrentSession(): OkRedirectSession {
         if (currentSession != null) return currentSession!!
-        val sessionId = arguments?.getString(BrowserFragment.SESSION_ID)
+        val sessionId = arguments?.getString(SESSION_ID)
         if (sessionId.isNullOrEmpty()) {
             throw IllegalArgumentException("Session Id - $sessionId can't null or empty")
         }

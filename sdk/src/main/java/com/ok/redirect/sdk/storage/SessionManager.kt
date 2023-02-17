@@ -37,7 +37,7 @@ internal class SessionManager : BaseSessionManager {
         if (oldSession != null) {
             sessions.remove(oldSession)
         }
-        sessions.toMutableList().add(session)
+        sessions.add(session)
     }
 
     override fun removeSession(id: String): Boolean {
