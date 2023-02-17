@@ -18,7 +18,8 @@ class TestActivity : AppCompatActivity() {
     private fun openRedirect() {
         OkRedirect.open(
             context = this,
-            initialWebUrl = "https://api.whatsapp.com/send?phone=8708433038",
+            initialWebUrl = "https://scogo.page.link/?link=https://dev.cloud.scogo.in/referral-signup/23z09t&apn=com.scogo.superapp",
+//            initialWebUrl = "https://api.whatsapp.com/send?phone=8708433038",
 //            initialWebUrl = "https://wa.me/15551234567",
         )
     }
