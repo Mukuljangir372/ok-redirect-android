@@ -33,7 +33,6 @@ internal abstract class BaseBrowserFragment : Fragment(), BrowserView {
                     javaScriptEnabled = true
                 }
             }
-            view.webViewClient = getWebViewClient()
         }
     }
 

@@ -18,7 +18,8 @@ class TestActivity : AppCompatActivity() {
     private fun openRedirect() {
         OkRedirect.open(
             context = this,
-            initialWebUrl = "https://www.google.com",
+            initialWebUrl = "https://api.whatsapp.com/send?phone=8708433038",
+//            initialWebUrl = "https://wa.me/15551234567",
         )
     }
 }
